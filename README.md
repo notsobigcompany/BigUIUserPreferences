@@ -109,7 +109,6 @@ struct User: Codable, Equatable {
 
 struct LoggedInUserKey: UserPreferenceKey {
     static var defaultValue: CodablePreferenceValue<User?> = .init()
-    static var name = "user_info_key"
 }
 ```
 
