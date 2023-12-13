@@ -18,6 +18,7 @@ UserDefaults.standard[MiniSidebarKey.self] = true
 
 By tightly coupling key names and default values together with `UserPreferenceKey` 
 you eliminate the possibility of key typos, differing defaults, and type mismatches.
+This package also adds support for `Codable` and `Date` types.
 
 ## Installation
 
@@ -45,7 +46,7 @@ struct MiniSidebarKey: UserPreferenceKey {
 
 ### SwiftUI 
 
-You can then access the value inside of a SwiftUI view with the `@UserPreference` 
+Using the key you can access the value inside of a SwiftUI view with the `@UserPreference` 
 property wrapper:
 
 ```swift 
@@ -60,6 +61,8 @@ struct MiniSidebarToggle: View {
     }
 }
 ```
+
+Unlike `AppStorage` you don't need to specify the type or default value.
 
 The wrapper always reflects the latest value in the `UserDefaults` and 
 invalidates the view on any external changes.
@@ -77,6 +80,10 @@ var isMiniBarEnabled = defaults[MiniSidebarToggle.self]
 // true
 print(isMiniBarEnabled)
 ```
+
+> [!NOTE]
+> If there's no value in the store the subscript API will return the key's default
+value, rather than the store's default.
 
 ## Supported Types 
 
@@ -105,6 +112,9 @@ struct LoggedInUserKey: UserPreferenceKey {
     static var name = "user_info_key"
 }
 ```
+
+> [!IMPORTANT]
+> The wrapper itself cannot be optional, but the underlying wrapped type can be.
 
 You can then access the underlying value by calling `wrappedValue`:
 
