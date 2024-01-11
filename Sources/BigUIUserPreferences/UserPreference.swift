@@ -4,7 +4,7 @@ import SwiftUI
 /// invalidates a view on a change in value in that user default.
 ///
 /// First declare a ``UserPreferenceKey`` type and specify a value for the
-/// required ``defaultValue`` property:
+/// required ``UserPreferenceKey/defaultValue`` property:
 ///
 /// ```swift
 /// private struct MyPreferenceKey: UserPreferenceKey {
@@ -18,7 +18,7 @@ import SwiftUI
 /// @UserPreference(MyPreferenceKey.self) private var myPreference
 /// ```
 ///
-/// The Swift compiler automatically infers the associated ``Value`` type as the
+/// The Swift compiler automatically infers the associated ``UserPreferenceKey/Value`` type as the
 /// type you specify for the default value.
 ///
 /// If the value changes, SwiftUI updates any parts of your view that depend on
